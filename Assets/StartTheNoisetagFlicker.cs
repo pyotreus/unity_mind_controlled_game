@@ -7,7 +7,7 @@ public class StartTheNoisetagFlicker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        NoisetagController.Instance.startPrediction(10);
+        NoisetagController.Instance.startPrediction(50);
     }
 
     // Update is called once per frame

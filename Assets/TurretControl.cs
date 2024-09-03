@@ -18,17 +18,17 @@ public class TurretControl : MonoBehaviour
 
     void Start()
     {
-        enemyObject = GameObject.FindGameObjectWithTag("Kevin");
-        if (enemyObject != null)
-        {
-            enemyHealth = enemyObject.GetComponent<EnemyHealth>();
-            if (enemyHealth != null )
-            {
-                enemyTransform = enemyObject.transform;
-            }
-        }
-        
-        
+        //enemyObject = GameObject.FindGameObjectWithTag("Kevin");
+        //if (enemyObject != null)
+        //{
+        //    enemyHealth = enemyObject.GetComponent<EnemyHealth>();
+        //    if (enemyHealth != null )
+        //    {
+        //        enemyTransform = enemyObject.transform;
+        //    }
+        //}
+        //AimAtEnemy(enemyObject);
+
     }
 
     // Update is called once per frame
@@ -41,7 +41,7 @@ public class TurretControl : MonoBehaviour
             distance = Vector3.Distance(enemyTransform.position, transform.position);
             if (distance <= distanceLimit && enemyHealth.targetAcquired)
             {
-                head.LookAt(enemyTransform);
+                head.LookAt(enemyTransform.position + Vector3.up * 1.5f);
                 if (Time.time > nextFire)
                 {
                     nextFire = Time.time + 1f / fireRate;

@@ -58,32 +58,37 @@ public class AimStateManager : MonoBehaviour
             // Check if the hit object has the tag "Kevin"
             if (hit.collider.CompareTag("Kevin"))
             {
+                GameObject enemyObject = hit.collider.gameObject;
                 currentTarget = hit.collider.GetComponent<EnemyHealth>();
-                currentTarget.targetAcquired = true;
-                if (currentTarget != null)
+
+                Transform sphereTransform = enemyObject.transform.Find("Sphere");
+                if (sphereTransform != null)
                 {
-                    //SetSphereVisibility(currentTarget.gameObject, true);
+                    SetSphereVisibility(currentTarget.gameObject, true);
+                    NoisetagBehaviour noisetagBehavior = sphereTransform.GetComponent<NoisetagBehaviour>();
+                    noisetagBehavior.isAimed = true;
+                    
                     // Enemy is targeted and has targetAcquired == true
                     // Notify turret to aim at this enemy
-                    NotifyTurretToAim(currentTarget.gameObject);
+                    //NotifyTurretToAim(currentTarget.gameObject);
                 }
                 else
                 {
                     // Enemy is not a valid target or targetAcquired is false
-                    NotifyTurretToStopAiming();
+                    //NotifyTurretToStopAiming();
                 }
             }
             else
             {
                 //SetSphereVisibility(currentTarget?.gameObject, false);
-                currentTarget = null;
-                NotifyTurretToStopAiming();
+                //currentTarget = null;
+                //NotifyTurretToStopAiming();
             }
         }
         else
         {
             // No object is hit by the ray
-            NotifyTurretToStopAiming();
+            //NotifyTurretToStopAiming();
         }
 
         currentState.UpdateState(this);
@@ -121,20 +126,20 @@ public class AimStateManager : MonoBehaviour
         }
     }
 
-    //private void SetSphereVisibility(GameObject enemy, bool isVisible)
-    //{
-    //    if (enemy == null) return;
+    private void SetSphereVisibility(GameObject enemy, bool isVisible)
+    {
+        if (enemy == null) return;
 
-    //    // Assuming the sphere is a direct child of the enemy GameObject
-    //    Transform sphere = enemy.transform.Find("Target");  // Replace "Sphere" with the actual name of the sphere child
+        // Assuming the sphere is a direct child of the enemy GameObject
+        Transform sphere = enemy.transform.Find("Sphere");  // Replace "Sphere" with the actual name of the sphere child
 
-    //    if (sphere != null)
-    //    {
-    //        Renderer sphereRenderer = sphere.GetComponent<Renderer>();
-    //        if (sphereRenderer != null)
-    //        {
-    //            sphereRenderer.enabled = isVisible;
-    //        }
-    //    }
-    //}
+        if (sphere != null)
+        {
+            Renderer sphereRenderer = sphere.GetComponent<Renderer>();
+            if (sphereRenderer != null)
+            {
+                sphereRenderer.enabled = isVisible;
+            }
+        }
+    }
 }

@@ -18,6 +18,7 @@ public class NoisetagBehaviour : MonoBehaviour
     public bool live_predictions = true;
     public GameObject camObject = null;
     public float max_distance = 60;
+    public bool isAimed = false;
 
 
     public UnityEvent selectedEvent;
@@ -29,12 +30,12 @@ public class NoisetagBehaviour : MonoBehaviour
 
     public void OnEnable()
     {
-        isVisible = true;
+        isVisible = isAimed ? true : false;
     }
 
     public void OnBecameVisible()
     {
-        //isVisible = true;
+        isVisible = isAimed ? true : false;
     }
 
     public void acquireNoisetagObjID()
