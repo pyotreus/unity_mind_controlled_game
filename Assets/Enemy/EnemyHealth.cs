@@ -7,7 +7,18 @@ public class EnemyHealth : MonoBehaviour
 
     [SerializeField] float health;
     public bool targetAcquired;
-    public bool noisetagVisible;
+    //public bool noisetagVisible;
+    //public GameObject explosionPrefab;
+    //public Transform player;
+    private ExplosionControl explosionControl;
+
+    void Start()
+    {
+        //Transform sphere = transform.Find("Sphere");
+        //Renderer sphereRenderer = sphere.GetComponent<Renderer>();
+        //sphereRenderer.enabled = false;
+        explosionControl = gameObject.GetComponent<ExplosionControl>();
+    }
 
     public void TakeDamage(float damage)
     {
@@ -26,20 +37,9 @@ public class EnemyHealth : MonoBehaviour
 
     private void EnemyDeath()
     {
-        Debug.Log("DEATH");
+        explosionControl.Explosion();
         Destroy(gameObject);
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        Transform sphere = transform.Find("Sphere");
-        Renderer sphereRenderer = sphere.GetComponent<Renderer>();
-        sphereRenderer.enabled = false;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

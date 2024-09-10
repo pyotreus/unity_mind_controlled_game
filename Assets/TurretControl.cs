@@ -15,6 +15,7 @@ public class TurretControl : MonoBehaviour
     public GameObject _Projectile;
     public float fireRate, nextFire;
     private GameObject currentTarget;  // Current enemy target
+    private FireControl fireControl;
 
     void Start()
     {
@@ -66,7 +67,11 @@ public class TurretControl : MonoBehaviour
     {
         currentTarget = enemy;
         // Add your logic here to start aiming at the enemy
-        //Debug.Log("Turret aiming at: " + currentTarget.name);
+        //fireControl = FindObjectOfType<FireControl>();
+        //if (fireControl != null)
+        //{
+        //    fireControl.SetTarget(currentTarget);
+        //}
     }
 
     // Method to stop aiming
@@ -75,5 +80,10 @@ public class TurretControl : MonoBehaviour
         currentTarget = null;
         // Add your logic here to stop aiming
         //Debug.Log("Turret stopped aiming.");
+    }
+
+    public GameObject GetTurretControl()
+    {
+        return currentTarget;
     }
 }

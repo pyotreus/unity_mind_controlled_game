@@ -30,12 +30,16 @@ public class NoisetagBehaviour : MonoBehaviour
 
     public void OnEnable()
     {
-        isVisible = isAimed ? true : false;
+        //condition only where noisetag should be aimed at
+        //isVisible = isAimed ? true : false;
+        isVisible = true;
     }
 
     public void OnBecameVisible()
     {
-        isVisible = isAimed ? true : false;
+        //condition only where noisetag should be aimed at
+        //isVisible = isAimed ? true : false;
+        isVisible = true;
     }
 
     public void acquireNoisetagObjID()
@@ -79,7 +83,7 @@ public class NoisetagBehaviour : MonoBehaviour
         Debug.Log("-------------- Selected: " + myobjID + "---------------------");
         // invoke our selection handler
         Debug.Log("Invoking:" + selectedEvent.ToString());
-        
+
         //TODO handle enemy parent object
         GameObject parentObject = this.gameObject.transform.parent.gameObject;
         EnemyHealth enemyHealth = parentObject.GetComponent<EnemyHealth>();
