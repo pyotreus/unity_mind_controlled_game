@@ -26,6 +26,7 @@ public class NoisetagBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        camObject = Camera.main.gameObject;
     }
 
     public void OnEnable()
@@ -85,25 +86,25 @@ public class NoisetagBehaviour : MonoBehaviour
         Debug.Log("Invoking:" + selectedEvent.ToString());
 
         //TODO handle enemy parent object
-        GameObject parentObject = this.gameObject.transform.parent.gameObject;
-        EnemyHealth enemyHealth = parentObject.GetComponent<EnemyHealth>();
-        enemyHealth.targetAcquired = true;
-        NotifyTurretToAim(parentObject);
+        //GameObject parentObject = this.gameObject.transform.parent.gameObject;
+        //EnemyHealth enemyHealth = parentObject.GetComponent<EnemyHealth>();
+        //enemyHealth.targetAcquired = true;
+        //NotifyTurretToAim(parentObject);
         //Destroy(parentObject);
 
         selectedEvent.Invoke();
         selectedObjectEvent.Invoke(this.gameObject);
     }
 
-    private void NotifyTurretToAim(GameObject enemy)
-    {
-        // Notify all turrets to aim at the specified enemy
-        TurretControl[] turrets = FindObjectsOfType<TurretControl>();
-        foreach (TurretControl turret in turrets)
-        {
-            turret.AimAtEnemy(enemy);
-        }
-    }
+    //private void NotifyTurretToAim(GameObject enemy)
+    //{
+    //    // Notify all turrets to aim at the specified enemy
+    //    TurretControl[] turrets = FindObjectsOfType<TurretControl>();
+    //    foreach (TurretControl turret in turrets)
+    //    {
+    //        turret.AimAtEnemy(enemy);
+    //    }
+    //}
 
     public void OnPrediction(float Perr)
     {

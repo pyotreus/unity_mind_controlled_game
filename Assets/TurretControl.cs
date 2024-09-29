@@ -19,7 +19,7 @@ public class TurretControl : MonoBehaviour
 
     void Start()
     {
-        //enemyObject = GameObject.FindGameObjectWithTag("Kevin");
+        enemyObject = GameObject.FindGameObjectWithTag("Kevin");
         //if (enemyObject != null)
         //{
         //    enemyHealth = enemyObject.GetComponent<EnemyHealth>();
@@ -28,7 +28,7 @@ public class TurretControl : MonoBehaviour
         //        enemyTransform = enemyObject.transform;
         //    }
         //}
-        //AimAtEnemy(enemyObject);
+        AimAtEnemy(enemyObject);
 
     }
 
@@ -40,7 +40,7 @@ public class TurretControl : MonoBehaviour
             enemyHealth = currentTarget.GetComponent<EnemyHealth>();
             enemyTransform = currentTarget.transform;
             distance = Vector3.Distance(enemyTransform.position, transform.position);
-            if (distance <= distanceLimit && enemyHealth.targetAcquired)
+            if (distance <= distanceLimit)
             {
                 head.LookAt(enemyTransform.position + Vector3.up * 1.5f);
                 if (Time.time > nextFire)
@@ -57,7 +57,7 @@ public class TurretControl : MonoBehaviour
     void shoot()
     {
         GameObject clone = Instantiate(_Projectile, barrel.position, head.rotation);
-        clone.GetComponent<Rigidbody>().AddForce(head.forward * 1500);
+        clone.GetComponent<Rigidbody>().AddForce(head.forward * 2500);
         Destroy(clone, 10);
     }
 

@@ -19,13 +19,6 @@ public class KamikazeEnemy : MonoBehaviour
         explosionControl = gameObject.GetComponent<ExplosionControl>();
     }
 
-    private void RotateTowardsPlayer()
-    {
-        Vector3 direction = (player.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
-    }
-
     void Update()
     {
 
@@ -38,6 +31,13 @@ public class KamikazeEnemy : MonoBehaviour
         {
             explosionControl.Explosion();
         }
+    }
+
+    private void RotateTowardsPlayer()
+    {
+        Vector3 direction = (player.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
     }
 
     // Method to move the enemy towards the player
