@@ -1081,7 +1081,7 @@ PrefabInstance:
     - target: {fileID: 5492230918560680807, guid: 962f916601e48ed43b593d817c6887c9,
         type: 3}
       propertyPath: distanceLimit
-      value: 30
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 7785698460718793990, guid: 962f916601e48ed43b593d817c6887c9,
         type: 3}
@@ -1440,7 +1440,7 @@ PrefabInstance:
     - target: {fileID: 7785698460718793990, guid: 962f916601e48ed43b593d817c6887c9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9161341718460491109, guid: 962f916601e48ed43b593d817c6887c9,
         type: 3}
@@ -1843,7 +1843,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858879108}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d5da84441aa97545ba8400e4b363444, type: 3}
   m_Name: 
